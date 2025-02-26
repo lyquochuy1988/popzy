@@ -24,6 +24,8 @@ function Popzy(options = {}) {
 
     this.opt = Object.assign({ 
         // templateID,
+        enableScrollLock: true,
+        scrollLockTarget: () => document.body,
         closeMethods: ["button", "overlay", "escape"],
         destroyOnClose: true,
         cssClass: [],
@@ -169,8 +171,17 @@ Popzy.prototype.open = function() {
     }
 
     // Add class no-scroll : disable scrolling
-    document.body.classList.add("popzy--no-scroll");
-    document.body.style.paddingRight = this._getScrollbarWidth() + "px";
+    if (this.opt.enableScrollLock) {
+        const target = this.opt.scrollLockTarget();
+
+        if (this._hasScrollBar(target)) {
+            target.classList.add("popzy--no-scroll");
+
+            const targetPadRight = parseInt(getComputedStyle(target).paddingRight);
+            target.style.paddingRight = targetPadRight + this._getScrollbarWidth() + "px";
+        }
+
+    }
 
     this._onTransitionEnd(this.opt.onOpen);
 
@@ -208,13 +219,21 @@ Popzy.prototype.close = function(destroy = this.opt.destroyOnClose) {
         }
 
         // Remove class no-scroll : enable scrolling
-        if (!Popzy.elements.length) {
-            document.body.classList.remove("popzy--no-scroll");
-            document.body.style.paddingRight = "";
+        if (this.opt.enableScrollLock && !Popzy.elements.length) {
+            const target = this.opt.scrollLockTarget();
+
+            if (this._hasScrollBar(target)) {
+                target.classList.remove("popzy--no-scroll");
+                target.style.paddingRight = "";
+            }
         }
 
         if (typeof this.opt.onClose === 'function') this.opt.onClose();
     })  
+}
+
+Popzy.prototype._hasScrollBar = function(target) {
+    return target.scrollHeight > target.clientHeight;
 }
 
 Popzy.prototype.destroy = function() {

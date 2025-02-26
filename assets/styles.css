@@ -16,6 +16,14 @@ html {
 body {
     font-size: 1.6em;
     line-height: 1.5;
+    overflow: hidden;
+}
+
+.wrapper {
+    position: fixed;
+    inset: 0;
+    overflow: auto;
+    padding: 50px;
 }
 
 p,

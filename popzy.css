@@ -20,7 +20,7 @@
     background-color: #fff;
     position: relative;
     width: min(600px, 90%);
-    padding: 20px 20px 0;
+    padding: 20px;
     border-radius: 5px;
     transform: scale(0);
     transition: transform 0.3s;
@@ -42,6 +42,10 @@
     font-size: 1.8rem;
     border: none;
     outline: none;
+}
+
+.popzy__close:hover {
+    color: #333;
     cursor: pointer;
 }
 
@@ -59,7 +63,7 @@
     display: flex;
     justify-content: flex-end;
     gap: 10px;
-    padding: 20px 0;
+    padding-top: 20px;
 }
 
 .popzy--no-scroll {
