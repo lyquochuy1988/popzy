@@ -212,6 +212,25 @@ code:not(.hljs) {
     border-radius: 4px;
 }
 
+.modal-btn {
+    padding: 8px 20px;
+    color: #fff;
+    background: #34495e;
+    border: none;
+}
+
+.modal-btn.primary {
+    background: #3498db;
+}
+
+.modal-btn.danger {
+    background: #e74c3c;
+}
+
+.modal-btn.pull-left {
+    margin-right: auto;
+}
+
 .important {
     text-decoration: underline;
 }

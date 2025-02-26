@@ -69,16 +69,16 @@
                 <button class="btn btn--secondary btn-demo js-popzy-modal-3">
                     Large Content Modal
                 </button>
-                <button class="btn btn--secondary btn-demo js-popzy-modal-5">
+                <button class="btn btn--secondary btn-demo js-popzy-modal-4">
                     Footer-Only Close Modal
                 </button>
-                <button class="btn btn--secondary btn-demo js-popzy-modal-6">
+                <button class="btn btn--secondary btn-demo js-popzy-modal-5">
                     Persistent Modal (Stays in DOM)
                 </button>
-                <button class="btn btn--secondary btn-demo js-popzy-modal-7">
+                <button class="btn btn--secondary btn-demo js-popzy-modal-6">
                     Multiple Modals
                 </button>
-                <button class="btn btn--secondary btn-demo js-popzy-modal-4">
+                <button class="btn btn--secondary btn-demo js-popzy-modal-7">
                     YouTube Embed Modal
                 </button>
 
@@ -405,8 +405,9 @@
             hljs.initHighlightingOnLoad();
 
             // Modal samples
-            const modal1Btn = document.querySelector(".js-popzy-modal-1");
 
+            // Basic Modal
+            const modal1Btn = document.querySelector(".js-popzy-modal-1");
             const modal1 = new Popzy({
                 // enableScrollLock: false,
                 content: `
@@ -420,6 +421,109 @@
 
             modal1Btn.onclick = () => {
                 modal1.open();
+            }
+
+            // Modal With Buttons
+            const modal2Btn = document.querySelector(".js-popzy-modal-2");
+            const modal2 = new Popzy({
+                content: `
+                    <h1>Modal With Buttons</h1>
+                    <p>Lorem ipsum</p>
+                `,
+                footer: true,
+            });
+
+            modal2.addFooterButton("Cancel", "modal-btn", (e) => {
+                modal2.close();
+            });
+            modal2.addFooterButton("Agree", "modal-btn primary", (e) => {
+                modal2.close();
+            });
+
+            modal2Btn.onclick = () => {
+                modal2.open();
+            }
+
+            // Large Content Modal
+            const modal3Btn = document.querySelector(".js-popzy-modal-3");
+            const modal3 = new Popzy({
+                content: `
+                    <h1>Large Content Modal</h1>
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                `,
+                footer: true,
+            });
+
+            modal3Btn.onclick = () => {
+                modal3.open();
+            }
+
+            // Footer-Only Close Modal
+            const modal4Btn = document.querySelector(".js-popzy-modal-4");            
+            const modal4 = new Popzy({
+                content: `
+                    <h1>Footer-Only Close Modal</h1>
+                    <p>Lorem ipsum</p>
+                `,
+                footer: true,
+                closeMethods: [],
+            });
+
+            modal4.addFooterButton("Close", "modal-btn", (e) => {
+                modal4.close();
+            });
+
+            modal4Btn.onclick = () => {
+                modal4.open();
+            }
+
+            // Persistent Modal (Stays in DOM)
+            const modal5Btn = document.querySelector(".js-popzy-modal-5");            
+            const modal5 = new Popzy({
+                content: `
+                    <h1>Persistent Modal (Stays in DOM)</h1>
+                    <p>Lorem ipsum</p>
+                `,
+                destroyOnClose: false,
+            });
+
+            modal5Btn.onclick = () => {
+                modal5.open();
+            }
+
+            // Multiple Modals
+            const modal6Btn = document.querySelector(".js-popzy-modal-6");            
+            const modal6 = new Popzy({
+                content: `
+                    <h1>Multiple Modals</h1>
+                    <p>Lorem ipsum</p>
+                    <button onclick="modal1.open()">Open Basic Modal</button>
+                `,
+            });
+
+            modal6Btn.onclick = () => {
+                modal6.open();
+            }  
+
+            // Youtube Embed Modal
+            const modal7Btn = document.querySelector(".js-popzy-modal-7");            
+            const modal7 = new Popzy({
+                content: `
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/xmQgEl_oqV4?si=8FUMx1Qs-O_0VRv3" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                `,
+                destroyOnClose: false,
+            });
+
+            modal7Btn.onclick = () => {
+                modal7.open();
             }
         </script>
     </body>
